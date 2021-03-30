@@ -25,8 +25,8 @@ vector<double> generateSequence(int n) {
 }
 
 struct Statistics {
-  int multOperationCounter = 0;
-  int sumOperationCounter = 0;
+  size_t multOperationCounter = 0;
+  size_t sumOperationCounter = 0;
 };
 
 auto calculateSimpleConvolution(const vector<double>& a, const vector<double>& b) {
@@ -307,7 +307,7 @@ double calculateDelta(vector<double>& a, vector<double>& b) {
 
 int main() {
   freopen("output.txt", "w", stdout);
-  for (int n = 100; n <= 3000; n += 100) {
+  for (int n = 1000; n <= 10000; n += 1000) {
     auto a = generateSequence(n);
     auto b = generateSequence(n);
     

@@ -101,8 +101,8 @@ void FFT(vector<Complex>& arr, int pwr, Statistics& stat, const vector<Complex>&
   
   for (int i = 0; i < size; i++) {
     arr[i] = a[i % a.size()] + w[i << Log2(w.size() / arr.size())] * b[i % b.size()];
-    stat.sumOperationCounter += 4;
-    stat.multOperationCounter += 3;
+    stat.sumOperationCounter += 3;
+    stat.multOperationCounter += 2;
   }
 }
 
@@ -154,7 +154,7 @@ auto calculateConvolutionWithFFT(const vector<double>& a, const vector<double>& 
   return tuple<double, Statistics, vector<double>>{(finish - start) * 1000.0 / CLOCKS_PER_SEC, stat, result};
 }
 
-void FHT(vector<double>& arr, Statistics& stat, const vector<double>& cosinuses, const vector<double>& sinuses) {
+void FHT(vector<double>& arr, Statistics& stat, const vector<double>& cosines, const vector<double>& sinuses) {
   if (arr.size() == 2) {
     arr = {arr[0] + arr[1], arr[0] - arr[1]};
     stat.sumOperationCounter += 2;
@@ -169,8 +169,8 @@ void FHT(vector<double>& arr, Statistics& stat, const vector<double>& cosinuses,
       a[i >> 1] = arr[i];
     }
   }
-  FHT(a, stat, cosinuses, sinuses);
-  FHT(b, stat, cosinuses, sinuses);
+  FHT(a, stat, cosines, sinuses);
+  FHT(b, stat, cosines, sinuses);
   a.resize(n);
   b.resize(n);
   for (int i = 0; i < n / 2; i++) {
@@ -178,8 +178,8 @@ void FHT(vector<double>& arr, Statistics& stat, const vector<double>& cosinuses,
     b[i + n / 2] = b[i];
   }
   for (int k = 0; k < n; k++) {
-    double c = cosinuses[k << Log2(cosinuses.size() / n)];
-    double s = sinuses[k << Log2(cosinuses.size() / n)];
+    double c = cosines[k << Log2(cosines.size() / n)];
+    double s = sinuses[k << Log2(cosines.size() / n)];
     arr[k] = a[k] + b[k] * c + b[(n - k) % n] * s; 
     stat.multOperationCounter += 2;
     stat.sumOperationCounter += 2;
@@ -193,10 +193,10 @@ auto calculateConvolutionWithFHT(const vector<double>& a, const vector<double>& 
   while ((1 << power) < (a.size() + b.size() - 1)) power++;
   int x = 1 << power;
   
-  vector<double> cosinuses(x);
+  vector<double> cosines(x);
   vector<double> sinuses(x);
   for (int i = 0; i < x; i++) {
-    cosinuses[i] = cos(2 * PI * i / x);
+    cosines[i] = cos(2 * PI * i / x);
     sinuses[i] = sin(2 * PI * i / x);
   }
   auto start = clock();
@@ -207,8 +207,8 @@ auto calculateConvolutionWithFHT(const vector<double>& a, const vector<double>& 
   brr.resize(x);
 
   
-  FHT(arr, stat, cosinuses, sinuses);
-  FHT(brr, stat, cosinuses, sinuses);
+  FHT(arr, stat, cosines, sinuses);
+  FHT(brr, stat, cosines, sinuses);
   
   vector<double> result(x);
   
@@ -223,7 +223,7 @@ auto calculateConvolutionWithFHT(const vector<double>& a, const vector<double>& 
     stat.sumOperationCounter += 3;
   }
   
-  FHT(result, stat, cosinuses, sinuses);
+  FHT(result, stat, cosines, sinuses);
   
   for (auto& value : result) {
     value /= x;
@@ -237,12 +237,12 @@ auto calculateConvolutionWithFHT(const vector<double>& a, const vector<double>& 
 }
 
 
-void DHT(vector<double>& arr, Statistics& stat, const vector<double>& cosinuses, const vector<double>& sinuses) {
+void DHT(vector<double>& arr, Statistics& stat, const vector<double>& cosines, const vector<double>& sinuses) {
   const int n = arr.size();
   vector<double> result(n);
   for (int i = 0; i < n; i++) {
     for (int j = 0; j < n; j++) {
-      result[i] += arr[j] * (cosinuses[i * j % n] + sinuses[i * j % n]);
+      result[i] += arr[j] * (cosines[i * j % n] + sinuses[i * j % n]);
       stat.multOperationCounter += 1;
       stat.sumOperationCounter += 2;
     }
@@ -255,10 +255,10 @@ auto calculateConvolutionWithDHT(const vector<double>& a, const vector<double>& 
 
   int x = a.size() + b.size() - 1;
   
-  vector<double> cosinuses(x);
+  vector<double> cosines(x);
   vector<double> sinuses(x);
   for (int i = 0; i < x; i++) {
-    cosinuses[i] = cos(2 * PI * i / x);
+    cosines[i] = cos(2 * PI * i / x);
     sinuses[i] = sin(2 * PI * i / x);
   }
   auto start = clock();
@@ -269,8 +269,8 @@ auto calculateConvolutionWithDHT(const vector<double>& a, const vector<double>& 
   brr.resize(x);
 
   
-  DHT(arr, stat, cosinuses, sinuses);
-  DHT(brr, stat, cosinuses, sinuses);
+  DHT(arr, stat, cosines, sinuses);
+  DHT(brr, stat, cosines, sinuses);
   
   vector<double> result(x);
   
@@ -285,7 +285,7 @@ auto calculateConvolutionWithDHT(const vector<double>& a, const vector<double>& 
     stat.sumOperationCounter += 3;
   }
   
-  DHT(result, stat, cosinuses, sinuses);
+  DHT(result, stat, cosines, sinuses);
   
   for (auto& value : result) {
     value /= x;
@@ -309,7 +309,7 @@ double calculateDelta(vector<double>& a, vector<double>& b) {
 
 int main() {
   
-  for (int n = 10; n < 1000; n += 5) {
+  for (int n = 10000; n <= 10000; n += 5) {
     auto a = generateSequence(n);
     auto b = generateSequence(n);
     

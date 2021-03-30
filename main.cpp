@@ -227,6 +227,7 @@ auto calculateConvolutionWithFHT(const vector<double>& a, const vector<double>& 
   
   for (auto& value : result) {
     value /= x;
+    stat.multOperationCounter++;
   }
   
   result.resize(a.size() + b.size() - 1);
@@ -289,6 +290,7 @@ auto calculateConvolutionWithDHT(const vector<double>& a, const vector<double>& 
   
   for (auto& value : result) {
     value /= x;
+    stat.multOperationCounter++;
   }
   
   result.resize(a.size() + b.size() - 1);

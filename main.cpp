@@ -30,6 +30,7 @@ struct Statistics {
 };
 
 auto calculateSimpleConvolution(const vector<double>& a, const vector<double>& b) {
+    
   assert(a.size() == b.size());
   auto start = clock();
   Statistics stat;
@@ -46,7 +47,11 @@ auto calculateSimpleConvolution(const vector<double>& a, const vector<double>& b
   
   auto finish = clock();
   
-  return tuple<double, Statistics, vector<double>>{(finish - start) * 1000.0 / CLOCKS_PER_SEC, stat, result};
+  return tuple<double, Statistics, vector<double>> {
+      (finish - start) * 1000.0 / CLOCKS_PER_SEC,
+      stat,
+      result
+    };
 }
 
 struct Complex {
@@ -81,7 +86,8 @@ auto precalc(int n) {
 }
 
 
-void FFT(vector<Complex>& arr, int pwr, Statistics& stat, const vector<Complex>& w) {
+void FFT(vector<Complex>& arr, int pwr, 
+  Statistics& stat, const vector<Complex>& w) {
   if (pwr == 0) return;
   
   const int size = 1 << pwr;
@@ -100,14 +106,18 @@ void FFT(vector<Complex>& arr, int pwr, Statistics& stat, const vector<Complex>&
   FFT(b, pwr - 1, stat, w);
   
   for (int i = 0; i < size; i++) {  
-    arr[i] = a[i % a.size()] + w[i << Log2(w.size() / arr.size())] * b[i % b.size()];
+    arr[i] = a[i % a.size()] +
+      w[i << Log2(w.size() / arr.size())] * b[i % b.size()];
     stat.sumOperationCounter += 3;
     stat.multOperationCounter += 2;
   }
 }
 
 
-auto calculateConvolutionWithFFT(const vector<double>& a, const vector<double>& b) {
+auto calculateConvolutionWithFFT(
+    const vector<double>& a,
+    const vector<double>& b
+  ) {
   Statistics stat;
   const int n = a.size();
   
@@ -151,10 +161,15 @@ auto calculateConvolutionWithFFT(const vector<double>& a, const vector<double>& 
   
   auto finish = clock();
   
-  return tuple<double, Statistics, vector<double>>{(finish - start) * 1000.0 / CLOCKS_PER_SEC, stat, result};
+  return tuple<double, Statistics, vector<double>>{
+      (finish - start) * 1000.0 / CLOCKS_PER_SEC,
+      stat,
+      result
+    };
 }
 
-void FHT(vector<double>& arr, Statistics& stat, const vector<double>& cosines, const vector<double>& sinuses) {
+void FHT(vector<double>& arr, Statistics& stat,
+    const vector<double>& cosines, const vector<double>& sinuses) {
   if (arr.size() <= 1) return;
   const int n = arr.size();
   vector<double> a(n >> 1), b(n >> 1);
@@ -182,7 +197,8 @@ void FHT(vector<double>& arr, Statistics& stat, const vector<double>& cosines, c
   }
 }
 
-auto calculateConvolutionWithFHT(const vector<double>& a, const vector<double>& b) {
+auto calculateConvolutionWithFHT(const vector<double>& a,
+  const vector<double>& b) {
   Statistics stat;
 
   int power = 0;
@@ -230,7 +246,11 @@ auto calculateConvolutionWithFHT(const vector<double>& a, const vector<double>& 
   
   auto finish = clock();
   
-  return tuple<double, Statistics, vector<double>>{(finish - start) * 1000.0 / CLOCKS_PER_SEC, stat, result};
+  return tuple<double, Statistics, vector<double>>{
+      (finish - start) * 1000.0 / CLOCKS_PER_SEC,
+      stat,
+      result
+    };
 }
 
 

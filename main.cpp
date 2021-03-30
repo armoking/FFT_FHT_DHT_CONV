@@ -307,7 +307,7 @@ double calculateDelta(vector<double>& a, vector<double>& b) {
 
 int main() {
   
-  for (int n = 10000; n <= 10000; n += 5) {
+  for (int n = 40000; n <= 40000; n += 5) {
     auto a = generateSequence(n);
     auto b = generateSequence(n);
     

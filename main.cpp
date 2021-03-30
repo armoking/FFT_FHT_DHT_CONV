@@ -155,11 +155,7 @@ auto calculateConvolutionWithFFT(const vector<double>& a, const vector<double>& 
 }
 
 void FHT(vector<double>& arr, Statistics& stat, const vector<double>& cosines, const vector<double>& sinuses) {
-  if (arr.size() == 2) {
-    arr = {arr[0] + arr[1], arr[0] - arr[1]};
-    stat.sumOperationCounter += 2;
-    return;
-  }
+  if (arr.size() <= 1) return;
   const int n = arr.size();
   vector<double> a(n >> 1), b(n >> 1);
   for (int i = 0; i < n; i++) {
@@ -219,7 +215,7 @@ auto calculateConvolutionWithFHT(const vector<double>& a, const vector<double>& 
         + arr[i] * brr[(x - i) % x]
         - arr[(x - i) % x] * brr[(x - i) % x]
       ) / 2;
-    stat.multOperationCounter += 4;
+    stat.multOperationCounter += 5;
     stat.sumOperationCounter += 3;
   }
   

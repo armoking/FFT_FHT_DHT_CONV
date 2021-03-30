@@ -1,0 +1,250 @@
+Size = 100
+
+simple:
+0 ms.
+Mult operations: 10000
+Sum operations: 10000
+
+fft:
+1 ms.
+Mult operations: 8960
+Sum operations: 12800
+Differ fft - simple: 1.34816e-10
+
+fht:
+1 ms.
+Mult operations: 9728
+Sum operations: 8960
+Differ fht - simple: 1.64335e-10
+
+dht:
+2 ms.
+Mult operations: 119997
+Sum operations: 238203
+Differ dht - simple: 1.43412e-10
+
+Size = 200
+
+simple:
+0 ms.
+Mult operations: 40000
+Sum operations: 40000
+
+fft:
+2 ms.
+Mult operations: 19968
+Sum operations: 28672
+Differ fft - simple: 7.01521e-10
+
+fht:
+2 ms.
+Mult operations: 21504
+Sum operations: 19968
+Differ fht - simple: 8.12442e-10
+
+dht:
+7 ms.
+Mult operations: 479997
+Sum operations: 956403
+Differ dht - simple: 1.0454e-09
+
+Size = 300
+
+simple:
+1 ms.
+Mult operations: 90000
+Sum operations: 90000
+
+fft:
+4 ms.
+Mult operations: 44032
+Sum operations: 63488
+Differ fft - simple: 7.10192e-10
+
+fht:
+4 ms.
+Mult operations: 47104
+Sum operations: 44032
+Differ fht - simple: 7.65333e-10
+
+dht:
+14 ms.
+Mult operations: 1079997
+Sum operations: 2154603
+Differ dht - simple: 7.81822e-10
+
+Size = 400
+
+simple:
+2 ms.
+Mult operations: 160000
+Sum operations: 160000
+
+fft:
+4 ms.
+Mult operations: 44032
+Sum operations: 63488
+Differ fft - simple: 1.07982e-08
+
+fht:
+5 ms.
+Mult operations: 47104
+Sum operations: 44032
+Differ fht - simple: 1.32787e-08
+
+dht:
+26 ms.
+Mult operations: 1919997
+Sum operations: 3832803
+Differ dht - simple: 1.54603e-08
+
+Size = 500
+
+simple:
+2 ms.
+Mult operations: 250000
+Sum operations: 250000
+
+fft:
+4 ms.
+Mult operations: 44032
+Sum operations: 63488
+Differ fft - simple: 1.03719e-07
+
+fht:
+3 ms.
+Mult operations: 47104
+Sum operations: 44032
+Differ fht - simple: 1.32775e-07
+
+dht:
+35 ms.
+Mult operations: 2999997
+Sum operations: 5991003
+Differ dht - simple: 1.78531e-07
+
+Size = 600
+
+simple:
+3 ms.
+Mult operations: 360000
+Sum operations: 360000
+
+fft:
+7 ms.
+Mult operations: 96256
+Sum operations: 139264
+Differ fft - simple: 1.30652e-08
+
+fht:
+9 ms.
+Mult operations: 102400
+Sum operations: 96256
+Differ fht - simple: 1.59731e-08
+
+dht:
+55 ms.
+Mult operations: 4319997
+Sum operations: 8629203
+Differ dht - simple: 2.82032e-08
+
+Size = 700
+
+simple:
+3 ms.
+Mult operations: 490000
+Sum operations: 490000
+
+fft:
+7 ms.
+Mult operations: 96256
+Sum operations: 139264
+Differ fft - simple: 6.57882e-07
+
+fht:
+10 ms.
+Mult operations: 102400
+Sum operations: 96256
+Differ fht - simple: 7.76532e-07
+
+dht:
+72 ms.
+Mult operations: 5879997
+Sum operations: 11747403
+Differ dht - simple: 1.66598e-06
+
+Size = 800
+
+simple:
+4 ms.
+Mult operations: 640000
+Sum operations: 640000
+
+fft:
+7 ms.
+Mult operations: 96256
+Sum operations: 139264
+Differ fft - simple: 2.24954e-08
+
+fht:
+7 ms.
+Mult operations: 102400
+Sum operations: 96256
+Differ fht - simple: 2.49984e-08
+
+dht:
+91 ms.
+Mult operations: 7679997
+Sum operations: 15345603
+Differ dht - simple: 3.44907e-08
+
+Size = 900
+
+simple:
+5 ms.
+Mult operations: 810000
+Sum operations: 810000
+
+fft:
+6 ms.
+Mult operations: 96256
+Sum operations: 139264
+Differ fft - simple: 1.53274e-08
+
+fht:
+9 ms.
+Mult operations: 102400
+Sum operations: 96256
+Differ fht - simple: 1.77988e-08
+
+dht:
+114 ms.
+Mult operations: 9719997
+Sum operations: 19423803
+Differ dht - simple: 2.60928e-08
+
+Size = 1000
+
+simple:
+7 ms.
+Mult operations: 1000000
+Sum operations: 1000000
+
+fft:
+6 ms.
+Mult operations: 96256
+Sum operations: 139264
+Differ fft - simple: 4.7594e-08
+
+fht:
+8 ms.
+Mult operations: 102400
+Sum operations: 96256
+Differ fht - simple: 5.39305e-08
+
+dht:
+147 ms.
+Mult operations: 11999997
+Sum operations: 23982003
+Differ dht - simple: 9.97413e-08
+

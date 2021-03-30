@@ -6,19 +6,19 @@ Mult operations: 1000000
 Sum operations: 1000000
 
 fft:
-7 ms.
-Mult operations: 141312
-Sum operations: 206848
+6 ms.
+Mult operations: 96256
+Sum operations: 139264
 Differ fft - simple: 2.59984e-08
 
 fht:
-7 ms.
-Mult operations: 147456
-Sum operations: 141312
+8 ms.
+Mult operations: 102400
+Sum operations: 96256
 Differ fht - simple: 2.85138e-08
 
 dht:
-127 ms.
+150 ms.
 Mult operations: 11999997
 Sum operations: 23982003
 Differ dht - simple: 4.70116e-08
@@ -26,24 +26,24 @@ Differ dht - simple: 4.70116e-08
 Size = 2000
 
 simple:
-24 ms.
+28 ms.
 Mult operations: 4000000
 Sum operations: 4000000
 
 fft:
-13 ms.
-Mult operations: 307200
-Sum operations: 450560
+15 ms.
+Mult operations: 208896
+Sum operations: 303104
 Differ fft - simple: 1.72858e-05
 
 fht:
 16 ms.
-Mult operations: 319488
-Sum operations: 307200
+Mult operations: 221184
+Sum operations: 208896
 Differ fht - simple: 2.2572e-05
 
 dht:
-515 ms.
+605 ms.
 Mult operations: 47999997
 Sum operations: 95964003
 Differ dht - simple: 9.05695e-05
@@ -51,24 +51,24 @@ Differ dht - simple: 9.05695e-05
 Size = 3000
 
 simple:
-55 ms.
+62 ms.
 Mult operations: 9000000
 Sum operations: 9000000
 
 fft:
-24 ms.
-Mult operations: 663552
-Sum operations: 974848
+45 ms.
+Mult operations: 450560
+Sum operations: 655360
 Differ fft - simple: 1.01486e-06
 
 fht:
-31 ms.
-Mult operations: 688128
-Sum operations: 663552
+39 ms.
+Mult operations: 475136
+Sum operations: 450560
 Differ fht - simple: 1.18738e-06
 
 dht:
-1171 ms.
+1350 ms.
 Mult operations: 107999997
 Sum operations: 215946003
 Differ dht - simple: 3.56651e-06
@@ -76,24 +76,24 @@ Differ dht - simple: 3.56651e-06
 Size = 4000
 
 simple:
-97 ms.
+123 ms.
 Mult operations: 16000000
 Sum operations: 16000000
 
 fft:
-24 ms.
-Mult operations: 663552
-Sum operations: 974848
+28 ms.
+Mult operations: 450560
+Sum operations: 655360
 Differ fft - simple: 9.29518e-07
 
 fht:
 31 ms.
-Mult operations: 688128
-Sum operations: 663552
+Mult operations: 475136
+Sum operations: 450560
 Differ fht - simple: 1.02264e-06
 
 dht:
-2120 ms.
+2422 ms.
 Mult operations: 191999997
 Sum operations: 383928003
 Differ dht - simple: 2.84588e-06
@@ -101,24 +101,24 @@ Differ dht - simple: 2.84588e-06
 Size = 5000
 
 simple:
-148 ms.
+172 ms.
 Mult operations: 25000000
 Sum operations: 25000000
 
 fft:
-52 ms.
-Mult operations: 1425408
-Sum operations: 2097152
+66 ms.
+Mult operations: 966656
+Sum operations: 1409024
 Differ fft - simple: 1.44346e-06
 
 fht:
-65 ms.
-Mult operations: 1474560
-Sum operations: 1425408
+90 ms.
+Mult operations: 1015808
+Sum operations: 966656
 Differ fht - simple: 1.67575e-06
 
 dht:
-3445 ms.
+4041 ms.
 Mult operations: 299999997
 Sum operations: 599910003
 Differ dht - simple: 4.30522e-06
@@ -126,24 +126,24 @@ Differ dht - simple: 4.30522e-06
 Size = 6000
 
 simple:
-227 ms.
+275 ms.
 Mult operations: 36000000
 Sum operations: 36000000
 
 fft:
-55 ms.
-Mult operations: 1425408
-Sum operations: 2097152
+56 ms.
+Mult operations: 966656
+Sum operations: 1409024
 Differ fft - simple: 1.92053e-05
 
 fht:
-68 ms.
-Mult operations: 1474560
-Sum operations: 1425408
+70 ms.
+Mult operations: 1015808
+Sum operations: 966656
 Differ fht - simple: 2.26368e-05
 
 dht:
-4883 ms.
+5791 ms.
 Mult operations: 431999997
 Sum operations: 863892003
 Differ dht - simple: 0.000116255
@@ -151,24 +151,24 @@ Differ dht - simple: 0.000116255
 Size = 7000
 
 simple:
-304 ms.
+328 ms.
 Mult operations: 49000000
 Sum operations: 49000000
 
 fft:
-50 ms.
-Mult operations: 1425408
-Sum operations: 2097152
+54 ms.
+Mult operations: 966656
+Sum operations: 1409024
 Differ fft - simple: 2.89523e-06
 
 fht:
-64 ms.
-Mult operations: 1474560
-Sum operations: 1425408
+78 ms.
+Mult operations: 1015808
+Sum operations: 966656
 Differ fht - simple: 3.32622e-06
 
 dht:
-6977 ms.
+8429 ms.
 Mult operations: 587999997
 Sum operations: 1175874003
 Differ dht - simple: 1.00741e-05
@@ -176,24 +176,24 @@ Differ dht - simple: 1.00741e-05
 Size = 8000
 
 simple:
-385 ms.
+492 ms.
 Mult operations: 64000000
 Sum operations: 64000000
 
 fft:
-51 ms.
-Mult operations: 1425408
-Sum operations: 2097152
+62 ms.
+Mult operations: 966656
+Sum operations: 1409024
 Differ fft - simple: 1.44434e-05
 
 fht:
-66 ms.
-Mult operations: 1474560
-Sum operations: 1425408
+84 ms.
+Mult operations: 1015808
+Sum operations: 966656
 Differ fht - simple: 1.76909e-05
 
 dht:
-9232 ms.
+10716 ms.
 Mult operations: 767999997
 Sum operations: 1535856003
 Differ dht - simple: 6.67496e-05
@@ -201,24 +201,24 @@ Differ dht - simple: 6.67496e-05
 Size = 9000
 
 simple:
-490 ms.
+565 ms.
 Mult operations: 81000000
 Sum operations: 81000000
 
 fft:
-109 ms.
-Mult operations: 3047424
-Sum operations: 4489216
+139 ms.
+Mult operations: 2064384
+Sum operations: 3014656
 Differ fft - simple: 6.0208e-06
 
 fht:
-137 ms.
-Mult operations: 3145728
-Sum operations: 3047424
+164 ms.
+Mult operations: 2162688
+Sum operations: 2064384
 Differ fht - simple: 6.64974e-06
 
 dht:
-12712 ms.
+18638 ms.
 Mult operations: 971999997
 Sum operations: 1943838003
 Differ dht - simple: 2.0258e-05
@@ -226,24 +226,24 @@ Differ dht - simple: 2.0258e-05
 Size = 10000
 
 simple:
-611 ms.
+976 ms.
 Mult operations: 100000000
 Sum operations: 100000000
 
 fft:
-116 ms.
-Mult operations: 3047424
-Sum operations: 4489216
+184 ms.
+Mult operations: 2064384
+Sum operations: 3014656
 Differ fft - simple: 3.97179e-05
 
 fht:
-139 ms.
-Mult operations: 3145728
-Sum operations: 3047424
+180 ms.
+Mult operations: 2162688
+Sum operations: 2064384
 Differ fht - simple: 4.70523e-05
 
 dht:
-16280 ms.
+21598 ms.
 Mult operations: 1199999997
 Sum operations: 2399820003
 Differ dht - simple: 0.000302131

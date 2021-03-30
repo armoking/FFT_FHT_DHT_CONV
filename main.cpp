@@ -25,6 +25,7 @@ vector<double> generateSequence(int n) {
 }
 
 struct Statistics {
+  bool flag = false;
   size_t multOperationCounter = 0;
   size_t sumOperationCounter = 0;
 };
@@ -86,8 +87,8 @@ auto precalc(int n) {
 }
 
 
-void FFT(vector<Complex>& arr, int pwr, 
-  Statistics& stat, const vector<Complex>& w) {
+void FFT(vector<Complex>& arr, int pwr,
+    Statistics& stat, const vector<Complex>& w) {
   if (pwr == 0) return;
   
   const int size = 1 << pwr;
@@ -108,8 +109,10 @@ void FFT(vector<Complex>& arr, int pwr,
   for (int i = 0; i < size; i++) {  
     arr[i] = a[i % a.size()] +
       w[i << Log2(w.size() / arr.size())] * b[i % b.size()];
-    stat.sumOperationCounter += 3;
-    stat.multOperationCounter += 2;
+    if (!stat.flag) {
+      stat.sumOperationCounter += 3;
+      stat.multOperationCounter += 2;
+    }
   }
 }
 
@@ -140,7 +143,10 @@ auto calculateConvolutionWithFFT(
   
   
   FFT(arr, power, stat, w);
+  stat.flag = true;
   FFT(brr, power, stat, w);
+  stat.flag = false;
+  
   
   for (int i = 0; i < x; i++) {
     arr[i] = arr[i] * brr[i];
@@ -192,8 +198,10 @@ void FHT(vector<double>& arr, Statistics& stat,
     double c = cosines[k << Log2(cosines.size() / n)];
     double s = sinuses[k << Log2(cosines.size() / n)];
     arr[k] = a[k] + b[k] * c + b[(n - k) % n] * s; 
-    stat.multOperationCounter += 2;
-    stat.sumOperationCounter += 2;
+    if (!stat.flag) {
+      stat.multOperationCounter += 2;
+      stat.sumOperationCounter += 2;
+    }
   }
 }
 
@@ -220,7 +228,9 @@ auto calculateConvolutionWithFHT(const vector<double>& a,
 
   
   FHT(arr, stat, cosines, sinuses);
+  stat.flag = true;
   FHT(brr, stat, cosines, sinuses);
+  stat.flag = false;
   
   vector<double> result(x);
   
@@ -326,8 +336,8 @@ double calculateDelta(vector<double>& a, vector<double>& b) {
 }
 
 int main() {
-  freopen("output.txt", "w", stdout);
-  for (int n = 1000; n <= 10000; n += 1000) {
+  freopen("output3.txt", "w", stdout);
+  for (int n = 100; n <= 1000; n += 100) {
     auto a = generateSequence(n);
     auto b = generateSequence(n);
     

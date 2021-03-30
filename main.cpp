@@ -99,7 +99,7 @@ void FFT(vector<Complex>& arr, int pwr, Statistics& stat, const vector<Complex>&
   FFT(a, pwr - 1, stat, w);
   FFT(b, pwr - 1, stat, w);
   
-  for (int i = 0; i < size; i++) {
+  for (int i = 0; i < size; i++) {  
     arr[i] = a[i % a.size()] + w[i << Log2(w.size() / arr.size())] * b[i % b.size()];
     stat.sumOperationCounter += 3;
     stat.multOperationCounter += 2;
@@ -278,7 +278,7 @@ auto calculateConvolutionWithDHT(const vector<double>& a, const vector<double>& 
         + arr[i] * brr[(x - i) % x]
         - arr[(x - i) % x] * brr[(x - i) % x]
       ) / 2;
-    stat.multOperationCounter += 4;
+    stat.multOperationCounter += 5;
     stat.sumOperationCounter += 3;
   }
   
@@ -306,8 +306,8 @@ double calculateDelta(vector<double>& a, vector<double>& b) {
 }
 
 int main() {
-  
-  for (int n = 40000; n <= 40000; n += 5) {
+  freopen("output.txt", "w", stdout);
+  for (int n = 100; n <= 3000; n += 100) {
     auto a = generateSequence(n);
     auto b = generateSequence(n);
     
